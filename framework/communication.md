@@ -1,4 +1,5 @@
-### Comprehensive Framework for Understanding Communication Dynamics
+### Comprehensive Framework for Understanding Communication Dynamics  
+#### Part of the Secret of the Universe
 _by Martin Ouimet_
 
 #### 1. The Invisible Contract in Communication
