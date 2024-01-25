@@ -5,7 +5,9 @@ export class Awareness {
 
     public async processInput(input: string): Promise<string> {
         const prompt = `
-        Current date & time: ${new Date().toDateString()} ${new Date().toTimeString()}        
+        It is currently: ${new Date().toUTCString()}
+        I am located in Montreal
+        
         Analyze and describe the initial context and sentiment of the following input: ${input}`;
         const awarenessOutput = await this.llmInterface.ask(prompt);
         return awarenessOutput;
