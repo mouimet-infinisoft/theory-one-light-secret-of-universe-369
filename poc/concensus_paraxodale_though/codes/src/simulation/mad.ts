@@ -5,7 +5,7 @@ import { TogetherAI } from '../ai/together.ai';
 import { Awareness } from '../awareness';
 import { IntegrationOfOutcomes } from '../integration';
 import { Memory } from '../memory';
-import { Mind } from '../mind';
+import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
 
 const aiTogetherInterface = new TogetherAI();
@@ -16,7 +16,7 @@ const aiInterface = aiTogetherInterface
 
 const awareness = new Awareness(aiInterface);
 const memory = new Memory(aiInterface);
-const mind = new Mind(aiInterface);
+const emotion = new Emotion(aiInterface);
 const reasoning = new Reasoning(aiInterface);
 const thirdElement = new IntegrationOfOutcomes(aiInterface);
 

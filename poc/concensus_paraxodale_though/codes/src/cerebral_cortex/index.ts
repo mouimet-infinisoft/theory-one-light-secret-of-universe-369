@@ -5,7 +5,7 @@ import { TogetherAI } from '../ai/together.ai';
 import { Awareness } from '../awareness';
 import { IntegrationOfOutcomes } from '../integration';
 import { Memory } from '../memory';
-import { Mind } from '../mind';
+import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
 import { IAi } from '../ai/abstraction';
 
@@ -14,7 +14,7 @@ class CerebralCortex {
     private aiInterface: IAi = new TogetherAI(),
     private awareness = new Awareness(aiInterface),
     private memory = new Memory(aiInterface),
-    private mind = new Mind(aiInterface),
+    private emotion = new Emotion(aiInterface),
     private reasoning = new Reasoning(aiInterface),
     private thirdElement = new IntegrationOfOutcomes(aiInterface),
   ) {
@@ -48,7 +48,7 @@ class CerebralCortex {
 
     // Store the thought process in memory
     this.memory.storeInformation(`
-        [${new Date().toLocaleDateString()}:${new Date().toLocaleTimeString()}]
+        [${new Date().toUTCString()}]
         Message:
         ${input}
         My Thought:
@@ -64,7 +64,7 @@ class CerebralCortex {
     const reasoningOutput = await this.reasoning.analyzeAndDecide(
       awarenessOutput,
     );
-    const mindOutput = await this.mind.integrateInformation(
+    const emotionOutput = await this.emotion.integrateInformation(
       reasoningOutput + awarenessOutput,
     );
     const memoryOutput = await this.memory.retrieveInformation(input);
@@ -78,8 +78,8 @@ class CerebralCortex {
       'My Reasoning Output: ' +
       reasoningOutput +
       '\n' +
-      'My Mind Output: ' +
-      mindOutput +
+      'My Emotion Output: ' +
+      emotionOutput +
       '\n' +
       'My Memory Output: ' +
       memoryOutput +
@@ -92,8 +92,8 @@ class CerebralCortex {
   private async rightHemisphereCreative(input: string): Promise<string> {
     const awarenessOutput = await this.awareness.processInput(input);
     const memoryOutput = await this.memory.retrieveInformation(input);
-    const mindOutput = await this.mind.integrateInformation(memoryOutput);
-    const reasoningOutput = await this.reasoning.analyzeAndDecide(mindOutput);
+    const emotionOutput = await this.emotion.integrateInformation(memoryOutput);
+    const reasoningOutput = await this.reasoning.analyzeAndDecide(emotionOutput);
 
     return (
       'Right Hemisphere - Creative' +
@@ -104,8 +104,8 @@ class CerebralCortex {
       'My Memory Output: ' +
       memoryOutput +
       '\n' +
-      'My Mind Output: ' +
-      mindOutput +
+      'My Emotion Output: ' +
+      emotionOutput +
       '\n' +
       'My Reasoning Output: ' +
       reasoningOutput +

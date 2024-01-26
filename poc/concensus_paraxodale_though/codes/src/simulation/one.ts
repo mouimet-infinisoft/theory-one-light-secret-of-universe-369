@@ -4,7 +4,7 @@ import { TogetherAI } from '../ai/together.ai';
 import { Awareness } from '../awareness';
 import { IntegrationOfOutcomes } from '../integration';
 import { Memory } from '../memory';
-import { Mind } from '../mind';
+import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
 
 const aiTogetherInterface = new TogetherAI();
@@ -15,14 +15,14 @@ const aiInterface = aiTogetherInterface
 
 const awareness = new Awareness(aiInterface);
 const memory = new Memory(aiInterface);
-const mind = new Mind(aiInterface);
+const emotion = new Emotion(aiInterface);
 const reasoning = new Reasoning(aiInterface);
 const thirdElement = new IntegrationOfOutcomes(aiInterface);
 
-mind.addCoreValue("genuine")
-mind.addCoreValue("honnest")
-mind.addCoreValue("humour")
-mind.setEmotionalState("balanced, zen, mindfull")
+emotion.addCoreValue("genuine")
+emotion.addCoreValue("honnest")
+emotion.addCoreValue("humour")
+emotion.setEmotionalState("balanced, zen, mindfull")
 reasoning.addLogicalFramework("When small talk, keep my answer short.")
 thirdElement.addCustomIndication("Select best answer possible and surround the spoken part of my thoughts between <my_spoken_answer>{my spoken answer here}</my_spoken_answer>.")
 
@@ -31,7 +31,7 @@ thirdElement.addCustomIndication("Select best answer possible and surround the s
 async function leftHemisphereAnalytic(input: string): Promise<string> {
   const awarenessOutput = await awareness.processInput(input);
   const reasoningOutput = await reasoning.analyzeAndDecide(awarenessOutput);
-  const mindOutput = await mind.integrateInformation(
+  const emotionOutput = await emotion.integrateInformation(
     reasoningOutput + awarenessOutput,
   );
   const memoryOutput = await memory.retrieveInformation(input);
@@ -40,7 +40,7 @@ async function leftHemisphereAnalytic(input: string): Promise<string> {
     'Left Hemisphere - Analytic' + '\n' +
     'My Awareness Output: ' + awarenessOutput + '\n' +
     'My Reasoning Output: ' + reasoningOutput + '\n' +
-    'My Mind Output: ' + mindOutput + '\n' +
+    'My Emotion Output: ' + emotionOutput + '\n' +
     'My Memory Output: ' + memoryOutput + '\n' +
     'Input: ' + input
   );
@@ -49,14 +49,14 @@ async function leftHemisphereAnalytic(input: string): Promise<string> {
 async function rightHemisphereCreative(input: string): Promise<string> {
   const awarenessOutput = await awareness.processInput(input);
   const memoryOutput = await memory.retrieveInformation(input);
-  const mindOutput = await mind.integrateInformation(memoryOutput);
-  const reasoningOutput = await reasoning.analyzeAndDecide(mindOutput);
+  const emotionOutput = await emotion.integrateInformation(memoryOutput);
+  const reasoningOutput = await reasoning.analyzeAndDecide(emotionOutput);
 
   return (
     'Right Hemisphere - Creative' + '\n' +
     'My Awareness Output: ' + awarenessOutput + '\n' +
     'My Memory Output: ' + memoryOutput + '\n' +
-    'My Mind Output: ' + mindOutput + '\n' +
+    'My Emotion Output: ' + emotionOutput + '\n' +
     'My Reasoning Output: ' + reasoningOutput + '\n' +
     'Input: ' + input
   );

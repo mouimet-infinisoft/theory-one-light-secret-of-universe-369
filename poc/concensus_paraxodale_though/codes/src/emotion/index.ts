@@ -1,6 +1,6 @@
 import { IAi } from "../ai/abstraction";
 
-export class Mind {
+export class Emotion {
     private emotionalState: string;
     private coreValues: string[];
     private creativeIdeas: string[];
@@ -42,7 +42,7 @@ export class Mind {
 
 // Example usage
 // const aiInterface = new AIInterface('your-api-key'); // Assuming AIInterface is already defined and imported
-// const mindComponent = new Mind(aiInterface);
+// const emotionComponent = new Mind(aiInterface);
 // mindComponent.setEmotionalState("Curious");
 // mindComponent.addCoreValue("Creativity");
 // mindComponent.addCoreValue("Empathy");

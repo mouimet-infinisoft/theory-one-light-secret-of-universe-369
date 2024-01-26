@@ -52,7 +52,7 @@ class AIInterface {
   
     const awarenessOutcome = mockAwarenessResponse('Input stimulus');
     const memoryOutcome = mockMemoryResponse('Relevant context');
-    const mindOutcome = mockMindResponse('Creative idea');
+    const emotionOutcome = mockMindResponse('Creative idea');
     const reasoningOutcome = mockReasoningResponse('Problem to solve');
   
     await integrationComponent.integrateOutcomes(
