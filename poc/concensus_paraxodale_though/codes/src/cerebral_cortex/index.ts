@@ -3,7 +3,7 @@ import { LogLevel } from '@brainstack/log';
 import { LocalAI } from '../ai/local.ai';
 import { TogetherAI } from '../ai/together.ai';
 import { Awareness } from '../awareness';
-import { IntegrationOfOutcomes } from '../integration';
+import { Mind } from '../mind';
 import { Memory } from '../memory';
 import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
@@ -16,7 +16,7 @@ class CerebralCortex {
     private memory = new Memory(aiInterface),
     private emotion = new Emotion(aiInterface),
     private reasoning = new Reasoning(aiInterface),
-    private thirdElement = new IntegrationOfOutcomes(aiInterface),
+    private mind = new Mind(aiInterface),
   ) {
     // // Set up the mind's core values and emotional state
     // this.mind.addCoreValue('altruist');
@@ -41,9 +41,10 @@ class CerebralCortex {
     const rightResult = await this.rightHemisphereCreative(input);
 
     // Integrate outcomes from both hemispheres
-    const finalThought = await this.thirdElement.integrateOutcomes(
+    const finalThought = await this.mind.integrateOutcomes(
       leftResult,
       rightResult,
+      this.awareness.perception.join('\n')
     );
 
     // Store the thought process in memory

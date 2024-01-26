@@ -1,5 +1,5 @@
 export * from './awareness'
-export * from './integration'
+export * from './mind'
 export * from './memory'
 export * from './emotion'
 export * from './reasoning'

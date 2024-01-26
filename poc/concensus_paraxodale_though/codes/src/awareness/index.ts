@@ -1,15 +1,22 @@
-import { IAi } from "../ai/abstraction";
+import { IAi } from '../ai/abstraction';
 
 export class Awareness {
-    constructor(private llmInterface: IAi) {}
+  public perception: string[];
 
-    public async processInput(input: string): Promise<string> {
-        const prompt = `
+  constructor(private llmInterface: IAi) {
+    this.perception = [];
+
+    this.perception.push(`
         It is currently: ${new Date().toUTCString()}
         I am located in Montreal
-        
+        `);
+  }
+
+  public async processInput(input: string): Promise<string> {
+    const prompt = `  
+    ${this.perception}
         Analyze and describe the initial context and sentiment of the following input: ${input}`;
-        const awarenessOutput = await this.llmInterface.ask(prompt);
-        return awarenessOutput;
-    }
+    const awarenessOutput = await this.llmInterface.ask(prompt);
+    return awarenessOutput;
+  }
 }

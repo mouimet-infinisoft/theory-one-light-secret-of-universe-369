@@ -3,7 +3,7 @@ import { LogLevel } from '@brainstack/log';
 import { LocalAI } from '../ai/local.ai';
 import { TogetherAI } from '../ai/together.ai';
 import { Awareness } from '../awareness';
-import { IntegrationOfOutcomes } from '../integration';
+import { Mind } from '../mind';
 import { Memory } from '../memory';
 import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
@@ -19,7 +19,7 @@ const awareness = new Awareness(aiInterface);
 const memory = new Memory(aiInterface);
 const emotion = new Emotion(aiInterface);
 const reasoning = new Reasoning(aiInterface);
-const thirdElement = new IntegrationOfOutcomes(aiInterface);
+const thirdElement = new Mind(aiInterface);
 
 emotion.addCoreValue('genuine');
 emotion.addCoreValue('honnest');

@@ -3,7 +3,7 @@ import { LogLevel } from '@brainstack/log';
 import { LocalAI } from '../ai/local.ai';
 import { TogetherAI } from '../ai/together.ai';
 import { Awareness } from '../awareness';
-import { IntegrationOfOutcomes } from '../integration';
+import { Mind } from '../mind';
 import { Memory } from '../memory';
 import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
@@ -18,16 +18,16 @@ const awareness = new Awareness(aiInterface);
 const memory = new Memory(aiInterface);
 const emotion = new Emotion(aiInterface);
 const reasoning = new Reasoning(aiInterface);
-const thirdElement = new IntegrationOfOutcomes(aiInterface);
+const thirdElement = new Mind(aiInterface);
 
-mind.addCoreValue("nervous")
-mind.setEmotionalState("mad")
+Mind.addCoreValue("nervous")
+Mind.setEmotionalState("mad")
 reasoning.addLogicalFramework("When small talk, keep my answer short.")
 thirdElement.addCustomIndication("Select best answer possible and surround the spoken part of my thoughts between <my_spoken_answer>{my spoken answer here}</my_spoken_answer>.")
 
 
 // Create an instance of CerebralCortex
-const humorCerebralCortex = new CerebralCortex(aiInterface,awareness,memory,mind,reasoning,thirdElement);
+const humorCerebralCortex = new CerebralCortex(aiInterface,awareness,memory,Mind,reasoning,thirdElement);
 
 async function talk(_message: string): Promise<void> {
     const finalThought = await humorCerebralCortex.think(_message);
