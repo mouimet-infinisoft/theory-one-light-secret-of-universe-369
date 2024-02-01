@@ -8,12 +8,14 @@ import { Memory } from '../memory';
 import { Emotion } from '../emotion';
 import { Reasoning } from '../reasoning';
 import { extractContentByTag } from '../utils/extract_content_by_tag';
+import { MixtralAI } from '../ai/mixtral';
 
-const aiTogetherInterface = new TogetherAI();
+const aiTogetherInterface = new TogetherAI(LogLevel.VERBOSE);
+const aiMixtral = new MixtralAI(LogLevel.VERBOSE);
 const aiLocalInterface = new LocalAI();
 // Instantiate cognitive model components
 
-const aiInterface = aiTogetherInterface;
+const aiInterface = aiTogetherInterface
 
 const awareness = new Awareness(aiInterface);
 const memory = new Memory(aiInterface);
